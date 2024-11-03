@@ -39,7 +39,7 @@ public class OverlayView extends View {
         // intervalText = String.format("Interval: %.2f ms, RefreshRate: %.2 Hz", intervalMs, 1000/intervalMs);
         // intervalText = String.format("RefreshRate: %.2 Hz", intervalMs);
         // Log.d("intervalTxt", intervalText);
-        intervalText = String.format("RefreshRate: %.2f Hz", 1000f/intervalMs);
+        intervalText = String.format("%.2f Hz  %.2f ms", 1000f/intervalMs, intervalMs);
         invalidate(); // Request to redraw the view
     }
 
