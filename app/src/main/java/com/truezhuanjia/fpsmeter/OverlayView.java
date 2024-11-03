@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -35,7 +36,10 @@ public class OverlayView extends View {
     }
 
     public void updateIntervalText(double intervalMs) {
-        intervalText = String.format("Interval: %.2f ms, RefreshRate: %.2 Hz", intervalMs, 1000/intervalMs);
+        // intervalText = String.format("Interval: %.2f ms, RefreshRate: %.2 Hz", intervalMs, 1000/intervalMs);
+        // intervalText = String.format("RefreshRate: %.2 Hz", intervalMs);
+        // Log.d("intervalTxt", intervalText);
+        intervalText = String.format("Interval: %.2f ms", intervalMs);
         invalidate(); // Request to redraw the view
     }
 
