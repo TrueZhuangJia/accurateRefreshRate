@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.truezhuanjia.fpsmeter'
+    namespace 'com.truezhuanjia.accuraterefreshrate'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.truezhuanjia.fpsmeter"
+        applicationId "com.truezhuanjia.accuraterefreshrate"
         minSdk 24
         targetSdk 34
         versionCode 1

@@ -1,4 +1,4 @@
-package com.truezhuanjia.fpsmeter;
+package com.truezhuanjia.accuraterefreshrate;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.truezhuanjia.fpsmeter", appContext.getPackageName());
+        assertEquals("com.truezhuanjia.accuraterefreshrate", appContext.getPackageName());
     }
 }

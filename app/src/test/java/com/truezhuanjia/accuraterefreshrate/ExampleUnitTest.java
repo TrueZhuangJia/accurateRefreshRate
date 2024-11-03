@@ -1,4 +1,4 @@
-package com.truezhuanjia.fpsmeter;
+package com.truezhuanjia.accuraterefreshrate;
 
 import org.junit.Test;
 

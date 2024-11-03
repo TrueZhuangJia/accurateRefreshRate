@@ -1,4 +1,4 @@
-package com.truezhuanjia.fpsmeter;
+package com.truezhuanjia.accuraterefreshrate;
 
 import android.app.Service;
 import android.content.Intent;
@@ -29,7 +29,7 @@ public class OverlayService extends Service {
             @Override
             public void run() {
                 updateOverlay();
-                handler.postDelayed(this, 200); // Repeat every 500 milliseconds (0.5 seconds)
+                handler.postDelayed(this, 200); // Repeat every 200 milliseconds
             }
         };
         handler.post(runnable); // Start the periodic updates

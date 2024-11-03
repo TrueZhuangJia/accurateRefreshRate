@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Accurate FPS Meter"
+rootProject.name = "Accurate Refresh Rate"
 include ':app'
