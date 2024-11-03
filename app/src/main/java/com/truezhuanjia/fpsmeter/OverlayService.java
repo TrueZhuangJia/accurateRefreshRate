@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
+import android.os.Handler;
 import android.view.Choreographer;
 import android.view.Gravity;
 import android.view.WindowManager;
@@ -12,12 +13,27 @@ public class OverlayService extends Service {
 
     private WindowManager windowManager;
     private OverlayView overlayView;
+    private double intervalMs = 0;
+    private Handler handler;
+    private Runnable runnable;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         overlayView = new OverlayView(this);
+
+        handler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                updateOverlay();
+                handler.postDelayed(this, 200); // Repeat every 500 milliseconds (0.5 seconds)
+            }
+        };
+        handler.post(runnable); // Start the periodic updates
+
 
         // Set fixed dimensions for the overlay view
         int overlayWidth = 800;  // Width in pixels
@@ -47,25 +63,30 @@ public class OverlayService extends Service {
     private final Choreographer.FrameCallback frameCallback = new Choreographer.FrameCallback() {
         private long lastFrameTimeNanos = 0;
 
+
         @Override
         public void doFrame(long frameTimeNanos) {
             if (lastFrameTimeNanos != 0) {
-                long interval = frameTimeNanos - lastFrameTimeNanos;
-                double intervalMs = interval / 1_000_000.0;
-                overlayView.updateIntervalText(intervalMs);
+                intervalMs = (frameTimeNanos - lastFrameTimeNanos) / 1_000_000.0;
+                // overlayView.updateIntervalText(intervalMs);
             }
             lastFrameTimeNanos = frameTimeNanos;
             Choreographer.getInstance().postFrameCallback(this);
         }
     };
 
+
+    private void updateOverlay() {
+        // Here you would calculate the intervalMs (time since last frame, etc.)
+        overlayView.updateIntervalText(intervalMs);
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (overlayView != null) {
-            windowManager.removeView(overlayView);
-        }
+        handler.removeCallbacks(runnable); // Stop the updates when service is destroyed
     }
+
 
     @Override
     public IBinder onBind(Intent intent) {
