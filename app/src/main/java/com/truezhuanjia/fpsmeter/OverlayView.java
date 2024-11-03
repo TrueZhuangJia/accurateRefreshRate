@@ -28,7 +28,7 @@ public class OverlayView extends View {
     private void init() {
         paint = new Paint();
         paint.setColor(Color.GREEN);
-        paint.setShadowLayer(1f,0.2f,0.2f, Color.BLACK);
+        paint.setShadowLayer(6f,0.2f,0.2f, Color.BLACK);
         paint.setTextSize(50);
         paint.setAntiAlias(true);
         paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
@@ -39,7 +39,7 @@ public class OverlayView extends View {
         // intervalText = String.format("Interval: %.2f ms, RefreshRate: %.2 Hz", intervalMs, 1000/intervalMs);
         // intervalText = String.format("RefreshRate: %.2 Hz", intervalMs);
         // Log.d("intervalTxt", intervalText);
-        intervalText = String.format("Interval: %.2f ms", intervalMs);
+        intervalText = String.format("RefreshRate: %.2f Hz", 1000f/intervalMs);
         invalidate(); // Request to redraw the view
     }
 
