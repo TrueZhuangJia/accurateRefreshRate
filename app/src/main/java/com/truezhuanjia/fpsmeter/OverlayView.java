@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,13 +26,16 @@ public class OverlayView extends View {
 
     private void init() {
         paint = new Paint();
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.GREEN);
+        paint.setShadowLayer(1f,0.2f,0.2f, Color.BLACK);
         paint.setTextSize(50);
+        paint.setAntiAlias(true);
+        paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
         paint.setAntiAlias(true);
     }
 
     public void updateIntervalText(double intervalMs) {
-        intervalText = String.format("Interval: %.2f ms", intervalMs);
+        intervalText = String.format("Interval: %.2f ms, RefreshRate: %.2 Hz", intervalMs, 1000/intervalMs);
         invalidate(); // Request to redraw the view
     }
 

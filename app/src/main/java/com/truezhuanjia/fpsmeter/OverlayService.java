@@ -20,7 +20,7 @@ public class OverlayService extends Service {
         overlayView = new OverlayView(this);
 
         // Set fixed dimensions for the overlay view
-        int overlayWidth = 500;  // Width in pixels
+        int overlayWidth = 800;  // Width in pixels
         int overlayHeight = 120; // Height in pixels
 
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
